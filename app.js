@@ -124,10 +124,13 @@ const transporter = nodemailer.createTransport({
             }
             else if(response.statusCode==200)
             {
+              console.log(apiKey);
               res.redirect('/sucess.html');
             }
             else
             {
+              console.log(response.statusCode);
+              console.log(apiKey);
               res.redirect('/fail.html')
             }
           })
