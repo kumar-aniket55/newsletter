@@ -131,6 +131,7 @@ const transporter = nodemailer.createTransport({
             {
               console.log(response.statusCode);
               console.log(apiKey);
+                console.log(process.env);
               res.redirect('/fail.html')
             }
           })
