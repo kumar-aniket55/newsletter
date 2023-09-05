@@ -7,6 +7,9 @@ const session = require('express-session');
 
 const app = express();
 
+require('dotenv').config();
+const apiKey = process.env.API_KEY;
+
 app.use(session({
     secret: '38947gf4873r4r',
     resave: false,
@@ -80,7 +83,7 @@ const transporter = nodemailer.createTransport({
           req.session.email=email;
           req.session.fname=firstName;
           req.session.lname=lastName;
-          console.log('Email sent:', info.response);
+          // console.log('Email sent:', info.response);
           res.redirect(`/verify`)
         }
       });
@@ -109,7 +112,7 @@ const transporter = nodemailer.createTransport({
             url : 'https://us21.api.mailchimp.com/3.0/lists/6764602961',
             method:'POST',
             headers:{
-              Authorization:'auth 2a8176ad10d422c7cb4ceecc35c16375-us21'
+              Authorization:`auth ${apiKey}`
             },
             body:postData
           }
